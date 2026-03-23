@@ -1,4 +1,6 @@
-package org.example.interfaces
+package org.example.trigonometric.interfaces
+
+import org.example.interfaces.MathFunction
 
 interface TrigonometricFunction<T : Number> : MathFunction<T> {
     fun getPeriod(): T;

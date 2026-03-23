@@ -1,6 +1,6 @@
 package org.example.trigonometric.interfaces
 
-import org.example.interfaces.TrigonometricFunction
+import org.example.trigonometric.interfaces.TrigonometricFunction
 import kotlin.math.PI
 
 abstract class Sin : TrigonometricFunction<Double> {

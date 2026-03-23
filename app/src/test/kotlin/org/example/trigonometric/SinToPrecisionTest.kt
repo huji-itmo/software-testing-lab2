@@ -1,6 +1,5 @@
-package org.example
+package org.example.trigonometric
 
-import org.example.trigonometric.SinToPrecision
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test

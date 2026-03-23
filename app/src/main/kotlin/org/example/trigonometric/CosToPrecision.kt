@@ -8,7 +8,5 @@ class CosToPrecision(
     private val precision: Double,
     private val sin: Sin = SinToPrecision(precision),
 ) : Cos() {
-    override fun calculateAt(x: Double): Double {
-        return sin.calculateAt(PI / 2 - x);
-    }
+    override fun calculateAt(x: Double) = sin.calculateAt(PI / 2 - x);
 }

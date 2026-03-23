@@ -1,8 +1,7 @@
-package org.example
+package org.example.trigonometric
 
 import io.mockk.every
 import io.mockk.mockk
-import org.example.trigonometric.CosecantToPrecision
 import org.example.trigonometric.interfaces.Sin
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
