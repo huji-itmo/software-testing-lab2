@@ -14,6 +14,7 @@ dependencies {
     testImplementation("io.mockk:mockk:1.14.9")
 
     implementation(libs.guava)
+    implementation(libs.jcommander)
 }
 
 java {

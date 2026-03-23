@@ -116,4 +116,22 @@ class SinToPrecisionTest {
             "21! overflows Long. Expected negative/garbage, got $fact21"
         }
     }
+
+    @ParameterizedTest
+    @ValueSource(doubles = [-3.2, -3.1, -3.0, -2.9, -2.8])
+    fun `calculateAt matches Kotlin Math sin at high precision for values near negative PI`(x: Double) {
+        val sinCalc = SinToPrecision(1e-10)
+        val expected = sin(x)
+        val actual = sinCalc.calculateAt(x)
+        assertEquals(expected, actual, 1e-5)
+    }
+
+    @ParameterizedTest
+    @ValueSource(doubles = [2.5, 2.6, 2.7, 2.8, 2.9, 3.0])
+    fun `calculateAt matches Kotlin Math sin at high precision for values near positive PI`(x: Double) {
+        val sinCalc = SinToPrecision(1e-10)
+        val expected = sin(x)
+        val actual = sinCalc.calculateAt(x)
+        assertEquals(expected, actual, 1e-5)
+    }
 }

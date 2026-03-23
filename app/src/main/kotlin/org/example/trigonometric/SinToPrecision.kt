@@ -1,6 +1,7 @@
 package org.example.trigonometric
 
 import org.example.trigonometric.interfaces.Sin
+import java.math.BigInteger
 import kotlin.math.PI
 import kotlin.math.abs
 import kotlin.math.pow
@@ -16,6 +17,14 @@ class SinToPrecision(
         fun factorial(n: Int): Long {
             return (1..n).fold(1L) { acc, i -> acc * i }
         }
+
+        private fun bigFactorial(n: Int): BigInteger {
+            var result = BigInteger.ONE
+            for (i in 2..n) {
+                result = result.multiply(BigInteger.valueOf(i.toLong()))
+            }
+            return result
+        }
     }
 
     override fun calculateAt(x: Double): Double {
@@ -26,7 +35,12 @@ class SinToPrecision(
 
         var result = 0.0
         for (n in 0..MAX_ITERATIONS) {
-            val term = (-1.0).pow(n.toDouble()) * normalized.pow((2 * n + 1).toDouble()) / factorial(2 * n + 1)
+            val denominator = if (2 * n + 1 <= 20) {
+                factorial(2 * n + 1).toDouble()
+            } else {
+                bigFactorial(2 * n + 1).toDouble()
+            }
+            val term = (-1.0).pow(n.toDouble()) * normalized.pow((2 * n + 1).toDouble()) / denominator
             if (abs(term) < precision) break
             result += term
         }
