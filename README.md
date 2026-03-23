@@ -14,7 +14,7 @@
 $$
 f(x) = 
 \begin{cases} 
-\Big(\big(\big(\frac{\sin x}{\cos x} - \csc x\big) + \sec x + \cos^2 x\big)^3\Big) & x \leq 0 \\[10pt]
+\Big(\big(\big(\frac{\sin x}{\cos x} - \csc x\big) + \sec x + \cos^2 x\big)^3\Big) & x \leq 0 \\
 \Big(\big(\log_2^2 x \cdot \log_2 x \cdot \log_2 x\big) + \big(\frac{\log_{10} x}{\log_2 x} + \ln x\big) - \ln x\Big) & x > 0
 \end{cases}
 $$
