@@ -1,7 +1,7 @@
 package org.example.logarithmic
 
 @JvmInline
-value class LogBase private constructor(val value: Double) {
+value class LogBase(val value: Double) {
     init {
         require(value > 0.0) { "Logarithm base must be positive." }
         require(value != 1.0) { "Logarithm base cannot be 1.0 (ln(1) is 0, causing division by zero)." }

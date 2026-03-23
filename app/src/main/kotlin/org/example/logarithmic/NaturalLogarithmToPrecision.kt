@@ -6,7 +6,7 @@ import kotlin.math.pow
 
 class NaturalLogarithmToPrecision(
     private val precision: Double,
-) : LogarithmicFunction {
+) : LogarithmicFunction<Double> {
 
     companion object {
         const val MAX_ITERATIONS = 10000;

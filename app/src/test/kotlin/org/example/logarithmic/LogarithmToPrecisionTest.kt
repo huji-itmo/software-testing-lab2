@@ -9,12 +9,12 @@ import kotlin.math.ln
 
 class LogarithmToPrecisionTest {
 
-    private class StubLogFunction(private val returnValue: Double) : LogarithmicFunction {
+    private class StubLogFunction(private val returnValue: Double) : LogarithmicFunction<Double> {
         override fun isDefinedAt(x: Double) = true
         override fun calculateAt(x: Double) = returnValue
     }
 
-    private class MathBasedStubLogFunction : LogarithmicFunction {
+    private class MathBasedStubLogFunction : LogarithmicFunction<Double> {
         override fun isDefinedAt(x: Double) = x > 0.0
         override fun calculateAt(x: Double) = ln(x)
     }
@@ -64,7 +64,7 @@ class LogarithmToPrecisionTest {
         val base = LogBase.of(2.0)
         val precision = 1e-10
 
-        val stubLn = object : LogarithmicFunction {
+        val stubLn = object : LogarithmicFunction<Double> {
             override fun isDefinedAt(x: Double) = true
             override fun calculateAt(x: Double): Double {
                 return if (x == 2.0) 2.0 else 10.0

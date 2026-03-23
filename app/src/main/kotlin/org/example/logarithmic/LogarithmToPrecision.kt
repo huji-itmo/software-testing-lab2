@@ -5,9 +5,9 @@ import org.example.logarithmic.interfaces.LogarithmicFunction
 class LogarithmToPrecision(
     private val base: LogBase,
     private val precision: Double,
-    private val ln: LogarithmicFunction = NaturalLogarithmToPrecision(precision),
+    private val ln: LogarithmicFunction<Double> = NaturalLogarithmToPrecision(precision),
     private val lnOfBase: Double = ln.calculateAt(base.value),
-) : LogarithmicFunction {
+) : LogarithmicFunction<Double> {
 
     override fun isDefinedAt(x: Double) = x > precision;
 
