@@ -19,6 +19,26 @@ f(x) =
 \end{cases}
 $$
 
+## Usage
+
+```bash
+./gradlew run --args="--start -5.0 --end 5.0 --step 0.1 --precision 1e-10"
+```
+
+## Output
+
+CSV files in `output/` directory:
+- `sin_results.csv`, `cos_results.csv`, `tan_results.csv`, `sec_results.csv`, `csc_results.csv`
+- `ln_results.csv`, `log_2.0_results.csv`, `log_10.0_results.csv`, `log_3.0_results.csv`
+- `piecewise_results.csv`
+
+## Testing
+
+```bash
+./gradlew test
+```
+
+
 ## Требования
 
 3. Обе "базовые" функции (в примере выше - sin(x) и ln(x)) должны быть реализованы при помощи разложения в ряд с задаваемой погрешностью. Использовать тригонометрические / логарифмические преобразования для упрощения функций **ЗАПРЕЩЕНО**.
