@@ -22,9 +22,9 @@ class CosToPrecisionTest {
     @Test
     fun `calculateAt returns 1 for input 0`() {
         val x = 0.0
-        val expectedSinInput = PI / 2 - x  // π/2
-        val sinValue = 1.0  // sin(π/2) = 1
-        val expected = 1.0  // cos(0) = 1
+        val expectedSinInput = PI / 2 - x
+        val sinValue = 1.0
+        val expected = 1.0
 
         every { mockSin.calculateAt(expectedSinInput) } returns sinValue
 
@@ -38,9 +38,9 @@ class CosToPrecisionTest {
     @Test
     fun `calculateAt returns 0 for PI over 2`() {
         val x = PI / 2
-        val expectedSinInput = PI / 2 - x  // 0
-        val sinValue = 0.0  // sin(0) = 0
-        val expected = 0.0  // cos(π/2) = 0
+        val expectedSinInput = PI / 2 - x
+        val sinValue = 0.0
+        val expected = 0.0
 
         every { mockSin.calculateAt(expectedSinInput) } returns sinValue
 
@@ -54,9 +54,9 @@ class CosToPrecisionTest {
     @Test
     fun `calculateAt returns -1 for PI`() {
         val x = PI
-        val expectedSinInput = PI / 2 - x  // -π/2
-        val sinValue = -1.0  // sin(-π/2) = -1
-        val expected = -1.0  // cos(π) = -1
+        val expectedSinInput = PI / 2 - x
+        val sinValue = -1.0
+        val expected = -1.0
 
         every { mockSin.calculateAt(expectedSinInput) } returns sinValue
 
@@ -70,9 +70,9 @@ class CosToPrecisionTest {
     @Test
     fun `calculateAt returns 0 for 3PI over 2`() {
         val x = 3 * PI / 2
-        val expectedSinInput = PI / 2 - x  // -π
-        val sinValue = 0.0  // sin(-π) = 0
-        val expected = 0.0  // cos(3π/2) = 0
+        val expectedSinInput = PI / 2 - x
+        val sinValue = 0.0
+        val expected = 0.0
 
         every { mockSin.calculateAt(expectedSinInput) } returns sinValue
 
@@ -86,9 +86,9 @@ class CosToPrecisionTest {
     @Test
     fun `calculateAt returns 1 for 2PI`() {
         val x = 2 * PI
-        val expectedSinInput = PI / 2 - x  // -3π/2
-        val sinValue = 1.0  // sin(-3π/2) = 1
-        val expected = 1.0  // cos(2π) = 1
+        val expectedSinInput = PI / 2 - x
+        val sinValue = 1.0
+        val expected = 1.0
 
         every { mockSin.calculateAt(expectedSinInput) } returns sinValue
 
@@ -102,9 +102,9 @@ class CosToPrecisionTest {
     @Test
     fun `calculateAt handles negative input correctly`() {
         val x = -PI / 3
-        val expectedSinInput = PI / 2 - x  // π/2 - (-π/3) = 5π/6
-        val sinValue = 0.5  // sin(5π/6) = 0.5
-        val expected = 0.5  // cos(-π/3) = 0.5
+        val expectedSinInput = PI / 2 - x
+        val sinValue = 0.5
+        val expected = 0.5
 
         every { mockSin.calculateAt(expectedSinInput) } returns sinValue
 
@@ -160,7 +160,7 @@ class CosToPrecisionTest {
 
     @Test
     fun `calculateAt with real SinToPrecision implementation`() {
-        // Test without mocking to verify end-to-end functionality
+
         val cosCalc = CosToPrecision(1e-6)
         val x = PI / 3
         val expected = cos(x)
@@ -223,7 +223,7 @@ class CosToPrecisionTest {
 
     @Test
     fun `calculateAt preserves sign for negative cosine values`() {
-        val x = 2 * PI / 3  // cos(2π/3) = -0.5
+        val x = 2 * PI / 3
         val expectedSinInput = PI / 2 - x
         val sinValue = kotlin.math.sin(expectedSinInput)
         val expected = cos(x)

@@ -11,10 +11,10 @@ import kotlin.math.sin
 
 class SinToPrecisionTest {
 
-    // We use a precision that ensures convergence before the Long factorial overflow (n < 10)
+
     private val safePrecision = 1e-6
 
-    // Tolerance for comparing double results in assertions
+
     private val assertionDelta = 1e-5
 
     @Test
@@ -57,7 +57,7 @@ class SinToPrecisionTest {
     @Test
     fun `calculateAt respects periodicity for large angles`() {
         val sinCalc = SinToPrecision(safePrecision)
-        // 2*PI + PI/2 should be equivalent to PI/2
+
         val x = (2 * PI) + (PI / 2)
         val expected = 1.0
         val actual = sinCalc.calculateAt(x)
@@ -83,7 +83,7 @@ class SinToPrecisionTest {
         val lowResult = lowPrecisionCalc.calculateAt(x)
         val highResult = highPrecisionCalc.calculateAt(x)
 
-        // The higher precision result should be closer to the actual Math.sin value
+
         val lowError = abs(expected - lowResult)
         val highError = abs(expected - highResult)
 
@@ -92,7 +92,7 @@ class SinToPrecisionTest {
         }
     }
 
-    // Test the companion object factorial function directly
+
     @Test
     fun `factorial calculates correct values for small n`() {
         Assertions.assertEquals(1, SinToPrecision.Companion.factorial(0))
@@ -105,13 +105,13 @@ class SinToPrecisionTest {
 
     @Test
     fun `factorial overflows for n greater than 21`() {
-        // 20! fits in Long
+
         val fact20 = SinToPrecision.Companion.factorial(20)
         assert(fact20 > 0) { "20! should be positive" }
 
-        // 21! overflows Long and becomes negative or garbage
+
         val fact21 = SinToPrecision.Companion.factorial(21)
-        // This assertion documents the known bug in the implementation
+
         assert(fact21 < 0 || fact21.toInt() == 0) {
             "21! overflows Long. Expected negative/garbage, got $fact21"
         }

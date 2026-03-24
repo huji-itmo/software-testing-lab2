@@ -18,13 +18,11 @@ class SecantToPrecisionTest {
 
     private val mockCos: Cos = mockk(relaxed = true)
 
-    // ==================== DEFINED VALUES ====================
-
     @Test
     fun `calculateAt returns 1 for input 0`() {
         val x = 0.0
-        val cosValue = 1.0  // cos(0) = 1
-        val expected = 1.0  // sec(0) = 1
+        val cosValue = 1.0
+        val expected = 1.0
 
         every { mockCos.calculateAt(x) } returns cosValue
 
@@ -39,8 +37,8 @@ class SecantToPrecisionTest {
     @Test
     fun `calculateAt returns 2 for PI over 3`() {
         val x = PI / 3
-        val cosValue = 0.5  // cos(π/3) = 0.5
-        val expected = 2.0  // sec(π/3) = 2
+        val cosValue = 0.5
+        val expected = 2.0
 
         every { mockCos.calculateAt(x) } returns cosValue
 
@@ -54,8 +52,8 @@ class SecantToPrecisionTest {
     @Test
     fun `calculateAt returns -1 for PI`() {
         val x = PI
-        val cosValue = -1.0  // cos(π) = -1
-        val expected = -1.0  // sec(π) = -1
+        val cosValue = -1.0
+        val expected = -1.0
 
         every { mockCos.calculateAt(x) } returns cosValue
 
@@ -69,8 +67,8 @@ class SecantToPrecisionTest {
     @Test
     fun `calculateAt returns -2 for 2PI over 3`() {
         val x = 2 * PI / 3
-        val cosValue = -0.5  // cos(2π/3) = -0.5
-        val expected = -2.0  // sec(2π/3) = -2
+        val cosValue = -0.5
+        val expected = -2.0
 
         every { mockCos.calculateAt(x) } returns cosValue
 
@@ -84,8 +82,8 @@ class SecantToPrecisionTest {
     @Test
     fun `calculateAt returns 1 for 2PI`() {
         val x = 2 * PI
-        val cosValue = 1.0  // cos(2π) = 1
-        val expected = 1.0  // sec(2π) = 1
+        val cosValue = 1.0
+        val expected = 1.0
 
         every { mockCos.calculateAt(x) } returns cosValue
 
@@ -111,7 +109,6 @@ class SecantToPrecisionTest {
         assertEquals(expected, result, assertionDelta)
     }
 
-    // ==================== UNDEFINED VALUES (NaN) ====================
 
     @Test
     fun `calculateAt returns NaN when x is exactly PI over 2`() {
@@ -157,11 +154,10 @@ class SecantToPrecisionTest {
         assertTrue(result.isNaN())
     }
 
-    // ==================== POSITIVE INFINITY ====================
 
     @Test
     fun `calculateAt returns POSITIVE_INFINITY approaching PI over 2 from left`() {
-        val x = PI / 2 - precision / 2  // Slightly less than π/2
+        val x = PI / 2 - precision / 2
         val secant = SecantToPrecision(precision, mockCos)
 
         assertFalse(secant.isDefinedAt(x))
@@ -172,7 +168,7 @@ class SecantToPrecisionTest {
 
     @Test
     fun `calculateAt returns POSITIVE_INFINITY approaching 3PI over 2 from right`() {
-        val x = 3 * PI / 2 + precision / 2  // Slightly more than 3π/2
+        val x = 3 * PI / 2 + precision / 2
         val secant = SecantToPrecision(precision, mockCos)
 
         assertFalse(secant.isDefinedAt(x))
@@ -183,7 +179,7 @@ class SecantToPrecisionTest {
 
     @Test
     fun `calculateAt returns POSITIVE_INFINITY approaching negative PI over 2 from right`() {
-        val x = -PI / 2 + precision / 2  // Slightly more than -π/2
+        val x = -PI / 2 + precision / 2
         val secant = SecantToPrecision(precision, mockCos)
 
         assertFalse(secant.isDefinedAt(x))
@@ -192,11 +188,10 @@ class SecantToPrecisionTest {
         assertEquals(Double.POSITIVE_INFINITY, result)
     }
 
-    // ==================== NEGATIVE INFINITY ====================
 
     @Test
     fun `calculateAt returns NEGATIVE_INFINITY approaching PI over 2 from right`() {
-        val x = PI / 2 + precision / 2  // Slightly more than π/2
+        val x = PI / 2 + precision / 2
         val secant = SecantToPrecision(precision, mockCos)
 
         assertFalse(secant.isDefinedAt(x))
@@ -207,7 +202,7 @@ class SecantToPrecisionTest {
 
     @Test
     fun `calculateAt returns NEGATIVE_INFINITY approaching 3PI over 2 from left`() {
-        val x = 3 * PI / 2 - precision / 2  // Slightly less than 3π/2
+        val x = 3 * PI / 2 - precision / 2
         val secant = SecantToPrecision(precision, mockCos)
 
         assertFalse(secant.isDefinedAt(x))
@@ -218,7 +213,7 @@ class SecantToPrecisionTest {
 
     @Test
     fun `calculateAt returns NEGATIVE_INFINITY approaching negative PI over 2 from left`() {
-        val x = -PI / 2 - precision / 2  // Slightly less than -π/2
+        val x = -PI / 2 - precision / 2
         val secant = SecantToPrecision(precision, mockCos)
 
         assertFalse(secant.isDefinedAt(x))
@@ -227,7 +222,6 @@ class SecantToPrecisionTest {
         assertEquals(Double.NEGATIVE_INFINITY, result)
     }
 
-    // ==================== IS DEFINED AT TESTS ====================
 
     @Test
     fun `isDefinedAt returns true for values away from odd multiples of PI over 2`() {
@@ -256,14 +250,13 @@ class SecantToPrecisionTest {
     fun `isDefinedAt handles large angles correctly`() {
         val secant = SecantToPrecision(precision, mockCos)
 
-        // 10π + π/2 should be undefined (odd multiple of π/2)
+
         assertFalse(secant.isDefinedAt(10 * PI + PI / 2))
 
-        // 10π should be defined
+
         assertTrue(secant.isDefinedAt(10 * PI))
     }
 
-    // ==================== MOCK VERIFICATION ====================
 
     @Test
     fun `calculateAt verifies cos is called with original x value`() {
@@ -286,7 +279,6 @@ class SecantToPrecisionTest {
         verify(exactly = 0) { mockCos.calculateAt(any()) }
     }
 
-    // ==================== END-TO-END TESTS ====================
 
     @Test
     fun `calculateAt with real CosToPrecision implementation`() {
@@ -324,7 +316,6 @@ class SecantToPrecisionTest {
         }
     }
 
-    // ==================== EDGE CASES ====================
 
     @Test
     fun `calculateAt handles very small positive angle`() {
@@ -388,7 +379,7 @@ class SecantToPrecisionTest {
 
     @Test
     fun `calculateAt preserves sign for negative secant values`() {
-        val x = 2 * PI / 3  // cos(2π/3) = -0.5, sec = -2
+        val x = 2 * PI / 3
         val cosValue = -0.5
         val expected = -2.0
 
@@ -416,7 +407,7 @@ class SecantToPrecisionTest {
     @Test
     fun `calculateAt handles cos returning very small value`() {
         val x = PI / 3
-        val cosValue = 1e-10  // Very small but not zero
+        val cosValue = 1e-10
         val expected = 1.0 / cosValue
 
         every { mockCos.calculateAt(x) } returns cosValue

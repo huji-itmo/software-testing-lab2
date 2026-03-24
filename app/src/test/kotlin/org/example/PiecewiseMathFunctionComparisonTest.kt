@@ -16,6 +16,7 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
 import kotlin.math.*
 
+@Suppress("SameParameterValue")
 class PiecewiseMathFunctionComparisonTest {
 
     private val precision = 1e-6

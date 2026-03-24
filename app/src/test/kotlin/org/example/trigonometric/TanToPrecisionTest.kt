@@ -21,7 +21,6 @@ class TanToPrecisionTest {
     private val mockSin: Sin = mockk()
     private val mockCos: Cos = mockk()
 
-    //region Basic calculation tests with mocked dependencies
     @Test
     fun `calculateAt returns 0 for input 0`() {
         val x = 0.0
@@ -149,9 +148,7 @@ class TanToPrecisionTest {
 
         assertTrue(result.isInfinite() || result.isNaN())
     }
-    //endregion
 
-    //region isDefinedAt tests
     @Test
     fun `isDefinedAt returns false at PI over 2`() {
         val x = PI / 2
@@ -206,7 +203,7 @@ class TanToPrecisionTest {
         assertFalse(tanCalc.isDefinedAt(PI / 2))
         assertFalse(tanCalc.isDefinedAt(PI / 2 + PI))
     }
-    //endregion
+    
 
     @ParameterizedTest
     @ValueSource(

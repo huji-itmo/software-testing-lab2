@@ -19,7 +19,7 @@ class CosecantToPrecisionTest {
 
     @Test
     fun `calculateAt returns reciprocal of sin when defined`() {
-        val x = PI / 6  // sin(π/6) = 0.5, csc(π/6) = 2.0
+        val x = PI / 6
         val sinValue = 0.5
         val expected = 1.0 / sinValue
 
@@ -130,7 +130,7 @@ class CosecantToPrecisionTest {
 
     @Test
     fun `calculateAt handles negative angles correctly`() {
-        val x = -PI / 6  // sin(-π/6) = -0.5, csc(-π/6) = -2.0
+        val x = -PI / 6
         val sinValue = -0.5
         val expected = 1.0 / sinValue
 
@@ -163,7 +163,7 @@ class CosecantToPrecisionTest {
 
         val cosecant = CosecantToPrecision(precision, mockSin)
 
-        // This should return Infinity since 1/0 = Infinity
+
         val result = cosecant.calculateAt(x)
         assertTrue(result.isInfinite())
     }
