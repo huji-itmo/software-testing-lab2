@@ -24,6 +24,7 @@ class NaturalLogarithmToPrecision(
         return computeLn(x)
     }
 
+    //ln(x) = m * ln(2) + ln(y) where x = y * 2^m
     private fun computeLn(x: Double): Double {
         var m = 0
         var y = x

@@ -19,6 +19,8 @@ f(x) =
 \end{cases}
 $$
 
+((\frac{\sin x}{\cos x} - \csc x) + \sec x + \cos^2 x)^3
+((\log_2^2 x \cdot \log_2 x \cdot \log_2 x) + (\frac{\log_{10} x}{\log_2 x} + \ln x) - \ln x)
 ## Usage
 
 ```bash
