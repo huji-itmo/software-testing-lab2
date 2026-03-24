@@ -40,6 +40,7 @@ CSV files in `output/` directory:
 ./gradlew test
 ```
 
+![alt text](https://github.com/huji-itmo/software-testing-lab2/blob/main/results_plot.png?raw=true)
 
 ## Требования
 
